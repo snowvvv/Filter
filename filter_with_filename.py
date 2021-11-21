@@ -35,7 +35,7 @@ def make_mosaic(img, gradation, grey_gradation):
 def main():
     img = Image.open("img2.jpg")                                        #размер блока (чем больше шаг, тем сильнее пикселизация)
     gradation = 10
-    grey_gradation = 1                             #степень градации серого цвета, 1= эталон
+    grey_gradation = 1                                               #степень градации серого цвета, 1= эталон
     res = make_mosaic(img, gradation, grey_gradation)
     res.save('res.jpg')
 
