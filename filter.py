@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+import doctest
 
 def get_color(matrix, x_start, y_start, gradation):
     """
@@ -9,6 +10,12 @@ def get_color(matrix, x_start, y_start, gradation):
     :param y_start: и y
     :param gradation: количество градаций серого цвета,
     :return: возвращает значение серого цвета, которое после исползуется для формирования изображения в методе make_mosaic
+    >>> get_color([[[1, 2, 3]]], 0, 0, 1)
+    2
+    >>> get_color([[[0, 0, 0]]], 0, 0, 1)
+    0
+    >>> get_color([[[50, 100, 150]] * 3] * 3, 0, 0, 3)
+    100
     """
     grey = 0
     for x in range(x_start, x_start + gradation):
@@ -32,6 +39,8 @@ def get_matrix(matrix, x_start, y_start, gradation, grey, gray_gradation):
     :param gray_gradation: Вводимое с клавиатуры значение, обозначает градацию серого цвета
     (50 как коэффициент, можно убрать, но я не вижу причин)
     :return: возвращает двумерный массив, по которому формируется результативное изображение
+    >>> get_matrix([[[100, 120, 140]]], 0, 0, 1, 120, 50)
+    [[[100, 100, 100]]]
     """
     grey_gradations = gray_gradation * 50
     for x in range(x_start, x_start + gradation):
@@ -70,6 +79,7 @@ def main():
     grey_gradation = int(input())                               #степень градации серого цвета, 1= эталон
     res = make_mosaic(img, gradation, grey_gradation)
     res.save('res.jpg')
+    doctest.testmod()
 
 
 if __name__ == '__main__':
