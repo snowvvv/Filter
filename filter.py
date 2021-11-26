@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import doctest
 
+
 def get_color(matrix, x_start, y_start, gradation):
     """
 
@@ -9,7 +10,8 @@ def get_color(matrix, x_start, y_start, gradation):
     :param x_start: начальные положения x
     :param y_start: и y
     :param gradation: количество градаций серого цвета,
-    :return: возвращает значение серого цвета, которое после исползуется для формирования изображения в методе make_mosaic
+    :return: возвращает значение серого цвета, которое после используется
+          для формирования изображения в методе make_mosaic
     >>> get_color([[[1, 2, 3]]], 0, 0, 1)
     2
     >>> get_color([[[0, 0, 0]]], 0, 0, 1)
@@ -73,10 +75,11 @@ def main():
     """
     print('Введите название исходного изображения:')
     img = Image.open(input())
-    print("Введите степень пикселизации изображения  серого цвета:")       #размер блока (чем больше шаг, тем сильнее пикселизация)
+    print(
+        "Введите степень пикселизации изображения  серого цвета:")
     gradation = int(input())
     print("Введите степень градации серого цвета")
-    grey_gradation = int(input())                               #степень градации серого цвета, 1= эталон
+    grey_gradation = int(input())
     res = make_mosaic(img, gradation, grey_gradation)
     res.save('res.jpg')
     doctest.testmod()
